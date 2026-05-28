@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>이미지 메타데이터 검사·정리 도구</title>
+    <meta
+      name="description"
+      content="AI 생성 이미지의 메타데이터(EXIF·C2PA·Made with AI)를 브라우저에서 검사하고 정리합니다. 파일은 서버로 전송되지 않습니다."
+    />
+    <link rel="stylesheet" href="./src/style.css" />
+  </head>
+  <body>
+    <main class="wrap">
+      <header class="hero">
+        <h1>🔍 이미지 메타데이터 검사·정리 도구</h1>
+        <p class="sub">
+          AI 생성 이미지의 숨은 메타데이터(EXIF · C2PA "Content Credentials" ·
+          "Made with AI" 태그)를 <b>브라우저 안에서</b> 검사하고 정리합니다.
+          <b>이미지는 서버로 전송되지 않습니다.</b>
+        </p>
+      </header>
+
+      <!-- 업로드 -->
+      <section id="dropzone" class="dropzone" aria-label="이미지 업로드">
+        <input type="file" id="fileInput" accept="image/*" hidden />
+        <div class="dz-inner">
+          <p class="dz-title">이미지를 끌어다 놓거나 클릭해서 선택</p>
+          <p class="dz-hint">JPEG · PNG · WebP 지원 · 한 번에 1장</p>
+        </div>
+      </section>
+
+      <!-- 미리보기 + 결과 -->
+      <section id="result" class="result hidden">
+        <div class="preview-row">
+          <div class="preview-box">
+            <h3>미리보기</h3>
+            <img id="preview" alt="업로드한 이미지 미리보기" />
+            <p id="fileMeta" class="file-meta"></p>
+          </div>
+
+          <!-- ① 검사 결과 -->
+          <div class="card">
+            <h3>① 검사 결과 (판별)</h3>
+            <div id="inspectReport" class="report">검사 중…</div>
+          </div>
+        </div>
+
+        <!-- ② 제거 & 다운로드 -->
+        <div class="card">
+          <h3>② 메타데이터 정리 &amp; 다운로드</h3>
+          <p class="muted">
+            EXIF · XMP · IPTC · C2PA 메타데이터를 픽셀 손상 없이 제거합니다.
+          </p>
+          <div class="btn-row">
+            <button id="stripBtn" class="btn primary">메타데이터 제거 → 다운로드</button>
+            <button id="cropBtn" class="btn">보이는 워터마크: 크롭 도구 열기</button>
+          </div>
+          <div id="stripResult" class="report hidden"></div>
+        </div>
+
+        <!-- 크롭 도구 -->
+        <div id="cropPanel" class="card hidden">
+          <h3>보이는 워터마크 크롭</h3>
+          <p class="muted">
+            워터마크가 가장자리/모서리에 있으면 그 부분을 잘라내는 게 가장 확실합니다.
+            드래그해서 남길 영역을 선택하세요.
+          </p>
+          <div class="crop-stage">
+            <canvas id="cropCanvas"></canvas>
+          </div>
+          <div class="btn-row">
+            <button id="cropApply" class="btn primary">선택 영역으로 자르기 → 다운로드</button>
+            <button id="cropReset" class="btn">초기화</button>
+          </div>
+          <p class="muted small">
+            ※ 임의 로고를 자연스럽게 지우는 본격 인페인팅은 이 버전에 없습니다(모델·GPU 필요).
+          </p>
+        </div>
+      </section>
+
+      <!-- ③ SynthID 안내 -->
+      <section class="card info">
+        <h3>③ 인비저블 워터마크(SynthID) 확인 — 외부 도구 필요</h3>
+        <p class="muted">
+          Google SynthID 같은 <b>보이지 않는 워터마크</b>는 디코더가 비공개라
+          브라우저에서 판별·제거할 수 없습니다. 아래에서 확인하세요.
+        </p>
+        <ul class="links">
+          <li>
+            <a href="https://deepmind.google/technologies/synthid/" target="_blank" rel="noopener">
+              Google SynthID Detector 포털</a>
+            — 이미지를 올려 SynthID 검출 (저널리스트·연구자 우선, 대기자 명단)
+          </li>
+          <li>
+            <b>Android</b>: 화면에서 이미지 길게 누르기 → <i>Circle to Search</i> →
+            "이 이미지 정보(About this image)" 에서 SynthID 표시 확인
+          </li>
+          <li>
+            <a href="https://contentcredentials.org/verify" target="_blank" rel="noopener">
+              Content Credentials Verify</a>
+            — C2PA 출처 정보 확인 (제거 전/후 비교용)
+          </li>
+        </ul>
+        <p class="muted small">
+          제거가 잘 됐는지 확인하려면, 정리한 파일을 위 도구에 다시 올려 <b>전/후를 비교</b>하세요.
+        </p>
+      </section>
+
+      <footer class="foot">
+        <p class="muted small">
+          모든 처리는 브라우저에서 실행됩니다. 이미지는 어디에도 업로드되지 않습니다.
+        </p>
+      </footer>
+    </main>
+
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
