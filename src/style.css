@@ -215,8 +215,21 @@ a:hover { text-decoration: underline; }
 .be-status.good { color: var(--good); }
 .be-status.bad { color: var(--bad); }
 
+/* 상세 확인 가이드 (사용방법 안) */
+.verify-guide {
+  margin-top: 22px; background: var(--panel); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 26px; box-shadow: var(--shadow);
+  max-width: 760px; margin-left: auto; margin-right: auto;
+}
+.verify-guide > h3 { margin: 0 0 6px; font-size: 18px; }
+.ask {
+  margin: 8px 0; padding: 10px 14px; font-size: 13px;
+  background: var(--accent-soft); border-left: 3px solid var(--accent);
+  border-radius: 6px; color: var(--text2); font-style: italic;
+}
+
 /* SynthID 확인 단계 */
-.verify-steps { display: flex; flex-direction: column; gap: 12px; margin: 14px 0; }
+.verify-steps { display: flex; flex-direction: column; gap: 16px; margin: 16px 0; }
 .vstep { display: flex; gap: 12px; align-items: flex-start; }
 .vnum {
   flex: none; width: 26px; height: 26px; border-radius: 50%;

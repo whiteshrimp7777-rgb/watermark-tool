@@ -93,57 +93,15 @@
           </div>
 
           <div class="card info">
-            <h3>③ 제거가 잘 됐는지 확인하는 법 (SynthID)</h3>
+            <h3>③ 제거가 잘 됐는지 확인</h3>
             <p class="muted">
-              인비저블 SynthID는 파일만 봐서는 알 수 없고, <b>Google Gemini</b>로 확인해야 합니다.
-              반드시 <b>제거 전 원본</b>과 <b>제거 후 결과</b>를 <b>둘 다</b> 올려 비교하세요.
+              방금 받은 파일을
+              <a href="https://gemini.google.com" target="_blank" rel="noopener">gemini.google.com</a>
+              에 올려 <i>"SynthID가 인식돼?"</i> 라고 물어보세요. 제거 전 원본과 비교하면 확실합니다.
             </p>
-
-            <div class="verify-steps">
-              <div class="vstep">
-                <span class="vnum">1</span>
-                <div>
-                  <b>제거 전 — 원본 확인</b>
-                  <p class="muted small">
-                    <a href="https://gemini.google.com" target="_blank" rel="noopener">gemini.google.com</a>
-                    접속 → <b>원본 이미지</b> 업로드 →
-                    <i>"이 이미지가 Google AI로 생성 또는 수정되었어? SynthID가 있어?"</i> 라고 질문.<br />
-                    → "예 / Google AI로 생성됨 / SynthID 있음" 이 나오면 워터마크가 있는 상태.
-                  </p>
-                </div>
-              </div>
-              <div class="vstep">
-                <span class="vnum">2</span>
-                <div>
-                  <b>제거 후 — 결과 확인</b>
-                  <p class="muted small">
-                    다시 <a href="https://gemini.google.com" target="_blank" rel="noopener">gemini.google.com</a>
-                    에 <b>제거된 이미지(다운로드한 파일)</b> 업로드 →
-                    같은 질문 <i>"이 이미지가 Google AI로 생성·수정됐어? SynthID 인식돼?"</i><br />
-                    → "아니요 / 감지되지 않음" 이면 제거(교란) 성공.
-                  </p>
-                </div>
-              </div>
-              <div class="vstep">
-                <span class="vnum">3</span>
-                <div>
-                  <b>비교 판정</b>
-                  <p class="muted small">
-                    <b>전 = 있음</b>, <b>후 = 없음</b> 으로 바뀌었으면 OK.
-                    둘 다 같게 나오면 제거가 안 됐거나, 원본에 애초에 SynthID가 없던 것.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div class="notice">
-              <p class="muted small" style="margin:0">
-                ⚠️ <b>주의 1.</b> Gemini <b>채팅 답변은 가끔 부정확</b>합니다 — 눈에 보이는 ✦ 로고만 보고
-                추측하기도 해요. 가능하면 Gemini 앱의 <b>"이미지 검증"</b> 기능을 쓰면 더 정확합니다.<br />
-                ⚠️ <b>주의 2.</b> "감지 안 됨"이 <b>완전한 제거를 보장하진 않습니다.</b> 현재 기술은 검출기를
-                "교란"하는 수준이며, 흔적이 남을 수 있습니다.
-              </p>
-            </div>
+            <p class="muted small">
+              자세한 전/후 비교 방법은 아래 <a href="#how">사용 방법 → 제거 확인하는 법</a>을 참고하세요.
+            </p>
           </div>
         </div>
       </section>
@@ -166,7 +124,63 @@
           <div class="step">
             <div class="step-num">3</div>
             <h4>다운로드 &amp; 확인</h4>
-            <p>정리된 이미지를 받고, Gemini로 전/후를 비교해 확인합니다.</p>
+            <p>정리된 이미지를 받고, Gemini로 전/후를 비교해 확인합니다. (아래 상세 참고)</p>
+          </div>
+        </div>
+
+        <!-- 상세 확인 가이드 (항상 표시) -->
+        <div class="verify-guide">
+          <h3>🔎 제거가 잘 됐는지 확인하는 법 (Gemini, 상세)</h3>
+          <p class="muted">
+            인비저블 SynthID는 파일만 봐서는 알 수 없어요. <b>Google Gemini</b>에 직접 물어봐야 합니다.
+            반드시 <b>제거 전 원본</b>과 <b>제거 후 결과</b>를 <b>둘 다</b> 올려 비교하세요.
+          </p>
+
+          <div class="verify-steps">
+            <div class="vstep">
+              <span class="vnum">1</span>
+              <div>
+                <b>제거 전 — 원본을 검사</b>
+                <p class="muted small">
+                  ① <a href="https://gemini.google.com" target="_blank" rel="noopener">gemini.google.com</a> 접속
+                  (로그인) → ② 입력창의 <b>+ / 이미지 아이콘</b>으로 <b>원본 이미지</b> 첨부 →
+                  ③ 이렇게 질문하세요:
+                </p>
+                <div class="ask">"이 이미지가 Google AI로 생성되었거나 수정되었어? SynthID 워터마크가 있어?"</div>
+                <p class="muted small">→ <b>"예 / Google AI로 제작됨 / SynthID 있음"</b> 이 나오면 워터마크가 있는 상태입니다.</p>
+              </div>
+            </div>
+
+            <div class="vstep">
+              <span class="vnum">2</span>
+              <div>
+                <b>제거 — 이 사이트에서 처리</b>
+                <p class="muted small">
+                  위 <b>② 인비저블 SynthID 제거</b>에서 처리하고 <b>결과 이미지를 다운로드</b>합니다.
+                </p>
+              </div>
+            </div>
+
+            <div class="vstep">
+              <span class="vnum">3</span>
+              <div>
+                <b>제거 후 — 결과를 다시 검사</b>
+                <p class="muted small">
+                  ① 다시 <a href="https://gemini.google.com" target="_blank" rel="noopener">gemini.google.com</a> 접속 →
+                  ② 이번엔 <b>방금 다운로드한 결과 이미지</b>를 첨부 → ③ 같은 질문:
+                </p>
+                <div class="ask">"이 이미지가 Google AI로 생성·수정됐어? SynthID가 인식돼?"</div>
+                <p class="muted small">→ <b>"아니요 / 감지되지 않음"</b> 으로 바뀌었으면 제거(교란) 성공입니다.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="notice">
+            <p class="muted small" style="margin:0">
+              ⚠️ <b>주의 1.</b> Gemini <b>채팅 답변은 가끔 부정확</b>합니다 — 눈에 보이는 ✦ 로고만 보고 추측하기도 해요.
+              가능하면 Gemini 앱의 <b>"이미지 검증(Verify)"</b> 기능을 쓰면 더 정확합니다.<br />
+              ⚠️ <b>주의 2.</b> "감지 안 됨"이 <b>완전한 제거를 보장하진 않습니다.</b> 현재 기술은 검출기를 "교란"하는 수준이며 흔적이 남을 수 있습니다.
+            </p>
           </div>
         </div>
       </section>
