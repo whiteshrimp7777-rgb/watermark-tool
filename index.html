@@ -98,21 +98,24 @@
           </li>
         </ul>
 
-        <p class="muted" style="margin-bottom:4px"><b>C. 인비저블 SynthID (가장 어려움)</b></p>
-        <ul class="links" style="margin-top:0">
+        <p class="muted" style="margin-bottom:4px"><b>C. 인비저블 SynthID — Gemini로 확인 (가장 현실적)</b></p>
+        <ol class="links" style="margin-top:0">
           <li>
-            <b>휴대폰 Gemini 앱</b>(가장 현실적): 이미지를 올리고 <i>"이 이미지에 SynthID 워터마크가 있어?"</i>
-            라고 물어보기. 제거 전엔 "있음", 제거 후엔 "감지 안 됨" 이면 교란 성공.
+            <b>제거 전:</b>
+            <a href="https://gemini.google.com" target="_blank" rel="noopener">gemini.google.com</a>
+            에 접속 → <b>원본 이미지</b>를 올리고
+            <i>"이 이미지가 Google AI로 생성 또는 수정되었어?"</i> 라고 질문.
+            → "그렇다 / SynthID 있음" 이면 워터마크가 있는 것.
           </li>
           <li>
-            <b>Android</b>: 이미지 화면에서 홈버튼 길게 누르기(<i>Circle to Search</i>) →
-            "이 이미지 정보" 에 AI/SynthID 표시가 사라졌는지.
+            <b>제거 후:</b> 다시
+            <a href="https://gemini.google.com" target="_blank" rel="noopener">gemini.google.com</a>
+            에 접속 → <b>작업이 완료된(제거된) 이미지</b>를 올리고
+            <i>"이 이미지가 Google AI로 생성 또는 수정되었어?"</i> 또는
+            <i>"SynthID가 인식돼?"</i> 라고 질문.
+            → "아니다 / 감지 안 됨" 이면 교란 성공.
           </li>
-          <li>
-            <a href="https://deepmind.google/technologies/synthid/" target="_blank" rel="noopener">Google SynthID Detector</a>
-            — 가장 정확하지만 현재 <b>대기자 명단</b>(저널리스트·연구자 우선)이라 일반인은 쓰기 어려움.
-          </li>
-        </ul>
+        </ol>
         <p class="muted small">
           ⚠️ "감지 안 됨"이 <b>"완전히 깨끗함"을 보장하지는 않습니다.</b> 인비저블은 흔적이 남을 수 있고,
           검출기를 헷갈리게 만든 수준일 수 있습니다. (현재 기술의 한계)
