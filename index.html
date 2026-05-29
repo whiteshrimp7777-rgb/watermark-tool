@@ -48,15 +48,29 @@
 
       </section>
 
-      <!-- ② 워터마크 제거 (GPU 서버 - 전체 제거) -->
+      <!-- ② 인비저블 SynthID 제거 (브라우저 / 서버) -->
       <section class="card info">
-        <h3>② 워터마크 제거 (인비저블 + 메타데이터)</h3>
-        <p class="muted">
-          <b>인비저블 워터마크(SynthID) + 메타데이터(EXIF·C2PA)</b>를 제거합니다.
-          GPU가 필요해 <b>운영자 PC의 서버</b>에서 처리하며, 서버가 켜져 있을 때만 동작합니다.
-          이미지가 그 서버로 전송됩니다.
-        </p>
+        <h3>② 인비저블 SynthID 제거</h3>
 
+        <!-- 방법 A: 브라우저 (서버리스, 실험적) -->
+        <p class="muted">
+          <b>방법 A — 브라우저에서 바로 (서버 불필요)</b><br>
+          접속자 본인 기기에서 처리합니다(이미지 전송 안 됨). 주파수(FFT) 분석으로 SynthID 신호를 교란하고,
+          메타데이터(EXIF·C2PA)도 함께 제거됩니다. GPU 없어도 동작(몇 초).
+          <b>⚠️ 효과는 검증되지 않은 실험 기능</b> — 아래 ③ Gemini로 꼭 확인하세요.
+        </p>
+        <div class="btn-row">
+          <button id="fftRun" class="btn primary">브라우저에서 SynthID 제거 → 다운로드</button>
+        </div>
+        <div id="fftResult" class="report hidden"></div>
+
+        <hr style="border:none;border-top:1px solid var(--border);margin:20px 0" />
+
+        <!-- 방법 B: 서버 (강력) -->
+        <p class="muted">
+          <b>방법 B — 운영자 GPU 서버 (더 강력, 서버 켜져 있을 때만)</b><br>
+          확산 재생성 방식이라 더 강력하지만, <b>운영자 PC 서버</b>가 켜져 있어야 하고 이미지가 그 서버로 전송됩니다.
+        </p>
         <div class="be-config">
           <label>백엔드 주소
             <input id="beUrl" type="text" placeholder="https://....trycloudflare.com" />
@@ -67,14 +81,12 @@
           <button id="beCheck" class="btn">서버 연결 확인</button>
           <span id="beStatus" class="be-status">미연결</span>
         </div>
-
         <div class="btn-row">
-          <button id="beRun" class="btn primary" disabled>이 이미지 인비저블+메타데이터 제거 → 다운로드</button>
+          <button id="beRun" class="btn" disabled>서버로 제거 → 다운로드</button>
         </div>
         <div id="beResult" class="report hidden"></div>
         <p class="muted small">
-          ※ 처리에 1~2분 걸립니다(GPU 재생성). 인비저블은 완전 제거가 아니라 <b>검출 교란</b>이며
-          화질이 약간 변할 수 있습니다. 인물 사진은 얼굴이 미세하게 바뀔 수 있으니 결과를 확인하세요.
+          ※ 서버 방식은 1~2분 걸립니다(GPU 재생성). 인물 사진은 얼굴이 미세하게 바뀔 수 있으니 결과를 확인하세요.
         </p>
       </section>
 
