@@ -46,73 +46,15 @@
           </div>
         </div>
 
-        <!-- ② 제거 & 다운로드 -->
-        <div class="card">
-          <h3>② 메타데이터 정리 &amp; 다운로드</h3>
-          <p class="muted">
-            EXIF · XMP · IPTC · C2PA 메타데이터를 픽셀 손상 없이 제거합니다.
-          </p>
-          <div class="btn-row">
-            <button id="stripBtn" class="btn primary">메타데이터 제거 → 다운로드</button>
-            <button id="cropBtn" class="btn">보이는 워터마크: 크롭 도구 열기</button>
-          </div>
-          <div id="stripResult" class="report hidden"></div>
-        </div>
-
-        <!-- 크롭 도구 -->
-        <div id="cropPanel" class="card hidden">
-          <h3>보이는 워터마크 크롭</h3>
-          <p class="muted">
-            워터마크가 가장자리/모서리에 있으면 그 부분을 잘라내는 게 가장 확실합니다.
-            드래그해서 남길 영역을 선택하세요.
-          </p>
-          <div class="crop-stage">
-            <canvas id="cropCanvas"></canvas>
-          </div>
-          <div class="btn-row">
-            <button id="cropApply" class="btn primary">선택 영역으로 자르기 → 다운로드</button>
-            <button id="cropReset" class="btn">초기화</button>
-          </div>
-          <p class="muted small">
-            ※ 임의 로고를 자연스럽게 지우는 본격 인페인팅은 이 버전에 없습니다(모델·GPU 필요).
-          </p>
-        </div>
       </section>
 
-      <!-- ③ SynthID 안내 -->
+      <!-- ② 워터마크 제거 (GPU 서버 - 전체 제거) -->
       <section class="card info">
-        <h3>③ 인비저블 워터마크(SynthID) 확인 — 외부 도구 필요</h3>
+        <h3>② 워터마크 제거 (보이는 + 인비저블 + 메타데이터)</h3>
         <p class="muted">
-          Google SynthID 같은 <b>보이지 않는 워터마크</b>는 디코더가 비공개라
-          브라우저에서 판별·제거할 수 없습니다. 아래에서 확인하세요.
-        </p>
-        <ul class="links">
-          <li>
-            <a href="https://deepmind.google/technologies/synthid/" target="_blank" rel="noopener">
-              Google SynthID Detector 포털</a>
-            — 이미지를 올려 SynthID 검출 (저널리스트·연구자 우선, 대기자 명단)
-          </li>
-          <li>
-            <b>Android</b>: 화면에서 이미지 길게 누르기 → <i>Circle to Search</i> →
-            "이 이미지 정보(About this image)" 에서 SynthID 표시 확인
-          </li>
-          <li>
-            <a href="https://contentcredentials.org/verify" target="_blank" rel="noopener">
-              Content Credentials Verify</a>
-            — C2PA 출처 정보 확인 (제거 전/후 비교용)
-          </li>
-        </ul>
-        <p class="muted small">
-          제거가 잘 됐는지 확인하려면, 정리한 파일을 위 도구에 다시 올려 <b>전/후를 비교</b>하세요.
-        </p>
-      </section>
-
-      <!-- ④ 인비저블 제거 (내 GPU 백엔드) -->
-      <section class="card info">
-        <h3>④ 인비저블 워터마크 제거 (GPU 서버 연결)</h3>
-        <p class="muted">
-          SynthID 같은 보이지 않는 워터마크 제거는 GPU가 필요해 <b>운영자 PC의 서버</b>에서 처리합니다.
-          서버가 켜져 있을 때만 동작하며, 이미지가 그 서버로 전송됩니다.
+          한 번에 <b>보이는 워터마크 · 인비저블 워터마크(SynthID) · 메타데이터(EXIF·C2PA)</b>를 모두 제거합니다.
+          GPU가 필요해 <b>운영자 PC의 서버</b>에서 처리하며, 서버가 켜져 있을 때만 동작합니다.
+          이미지가 그 서버로 전송됩니다.
         </p>
 
         <div class="be-config">
@@ -127,19 +69,60 @@
         </div>
 
         <div class="btn-row">
-          <button id="beRun" class="btn primary" disabled>이 이미지 인비저블 제거 → 다운로드</button>
+          <button id="beRun" class="btn primary" disabled>이 이미지 전체 제거 → 다운로드</button>
         </div>
         <div id="beResult" class="report hidden"></div>
         <p class="muted small">
-          ※ 처리에 1~2분 걸립니다(GPU 재생성). 완전 제거가 아니라 <b>검출 교란</b>이며 화질이 약간 변할 수 있습니다.
-          인물 사진은 얼굴이 미세하게 바뀔 수 있으니 결과를 확인하세요.
+          ※ 처리에 1~2분 걸립니다(GPU 재생성). 인비저블은 완전 제거가 아니라 <b>검출 교란</b>이며
+          화질이 약간 변할 수 있습니다. 인물 사진은 얼굴이 미세하게 바뀔 수 있으니 결과를 확인하세요.
+        </p>
+      </section>
+
+      <!-- ③ 제거 확인 방법 -->
+      <section class="card info">
+        <h3>③ 제거가 잘 됐는지 확인하는 법</h3>
+        <p class="muted">
+          무엇을 제거했냐에 따라 확인 방법이 다릅니다. <b>제거 전/후 파일을 둘 다</b> 올려 비교하세요.
+        </p>
+
+        <p class="muted" style="margin-bottom:4px"><b>A. 보이는 워터마크 (✦ 스파클·로고)</b></p>
+        <ul class="links" style="margin-top:0">
+          <li>가장 간단: 결과 이미지를 <b>눈으로</b> 보고 로고가 사라졌는지 확인.</li>
+        </ul>
+
+        <p class="muted" style="margin-bottom:4px"><b>B. 메타데이터 · C2PA (출처 서명)</b></p>
+        <ul class="links" style="margin-top:0">
+          <li>
+            <a href="https://contentcredentials.org/verify" target="_blank" rel="noopener">contentcredentials.org/verify</a>
+            에 올리기 → 제거 전엔 "Content Credentials found", 제거 후엔 <b>"No Content Credentials"</b> 가 나오면 성공.
+          </li>
+        </ul>
+
+        <p class="muted" style="margin-bottom:4px"><b>C. 인비저블 SynthID (가장 어려움)</b></p>
+        <ul class="links" style="margin-top:0">
+          <li>
+            <b>휴대폰 Gemini 앱</b>(가장 현실적): 이미지를 올리고 <i>"이 이미지에 SynthID 워터마크가 있어?"</i>
+            라고 물어보기. 제거 전엔 "있음", 제거 후엔 "감지 안 됨" 이면 교란 성공.
+          </li>
+          <li>
+            <b>Android</b>: 이미지 화면에서 홈버튼 길게 누르기(<i>Circle to Search</i>) →
+            "이 이미지 정보" 에 AI/SynthID 표시가 사라졌는지.
+          </li>
+          <li>
+            <a href="https://deepmind.google/technologies/synthid/" target="_blank" rel="noopener">Google SynthID Detector</a>
+            — 가장 정확하지만 현재 <b>대기자 명단</b>(저널리스트·연구자 우선)이라 일반인은 쓰기 어려움.
+          </li>
+        </ul>
+        <p class="muted small">
+          ⚠️ "감지 안 됨"이 <b>"완전히 깨끗함"을 보장하지는 않습니다.</b> 인비저블은 흔적이 남을 수 있고,
+          검출기를 헷갈리게 만든 수준일 수 있습니다. (현재 기술의 한계)
         </p>
       </section>
 
       <footer class="foot">
         <p class="muted small">
-          ①②③ 처리는 브라우저에서 실행되어 이미지가 전송되지 않습니다.
-          ④ 인비저블 제거만 운영자 GPU 서버로 이미지가 전송됩니다.
+          ① 검사는 브라우저에서 실행되어 이미지가 전송되지 않습니다.
+          ② 제거는 운영자 GPU 서버로 이미지가 전송됩니다.
         </p>
       </footer>
     </main>
