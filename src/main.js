@@ -2,6 +2,7 @@
 import { inspectImage } from './inspect.js';
 import { stripMetadata } from './strip.js';
 import { setupCrop } from './visible.js';
+import { setupBackend } from './invisible.backend.js';
 import { renderReport, downloadBlob, cleanFilename, humanSize } from './ui.js';
 
 const $ = (id) => document.getElementById(id);
@@ -111,3 +112,6 @@ cropBtn.addEventListener('click', () => {
 });
 cropApply.addEventListener('click', () => cropper && cropper.apply());
 cropReset.addEventListener('click', () => cropper && cropper.reset());
+
+// ---------- 인비저블 제거 (GPU 백엔드) ----------
+setupBackend(() => currentFile);
