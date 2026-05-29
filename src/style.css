@@ -1,22 +1,22 @@
 :root {
-  --bg: #f3f5f6;
-  --panel: #ffffff;
-  --panel2: #f6f7f8;
-  --border: #e6e8eb;
-  --text: #222222;
-  --text2: #444444;
-  --muted: #707070;
-  --faint: #999999;
+  --bg: #0a0b0e;           /* 메인 배경 (near-black) */
+  --panel: #15171b;        /* 카드 */
+  --panel2: #1c1f24;       /* 보조 표면 */
+  --border: #2a2d33;
+  --text: #f0f1f3;
+  --text2: #c7ccd2;
+  --muted: #9aa0a8;
+  --faint: #6b7178;
   --accent: #ea4c89;       /* 핑크 */
-  --accent-d: #d63d77;
-  --accent-soft: #fdedf3;
-  --good: #16a34a;
-  --warn: #e8590c;
+  --accent-d: #d5467d;
+  --accent-soft: rgba(234, 76, 137, 0.14);
+  --good: #68cd52;
+  --warn: #f59e0b;
   --bad: #f53f3f;
   --radius: 12px;
   --radius-sm: 8px;
-  --shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
-  --shadow-pink: 0 4px 12px rgba(234, 76, 137, 0.3);
+  --shadow: 0 2px 14px rgba(0, 0, 0, 0.4);
+  --shadow-pink: 0 4px 16px rgba(234, 76, 137, 0.35);
 }
 
 * { box-sizing: border-box; }
@@ -36,7 +36,7 @@ h1, h2, h3, h4 { font-family: "Cabin", "Inter", sans-serif; letter-spacing: -0.0
 /* 헤더 / 네비 */
 .nav {
   position: sticky; top: 0; z-index: 50;
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(10, 11, 14, 0.8);
   backdrop-filter: saturate(180%) blur(10px);
   border-bottom: 1px solid var(--border);
 }
@@ -60,7 +60,7 @@ main { max-width: 920px; margin: 0 auto; padding: 0 18px; }
   color: var(--accent); background: var(--accent-soft);
   padding: 6px 14px; border-radius: 9999px; margin-bottom: 20px;
 }
-.hero h1 { font-size: 40px; line-height: 1.2; font-weight: 700; margin: 0 0 16px; color: #1a1a1a; }
+.hero h1 { font-size: 40px; line-height: 1.2; font-weight: 700; margin: 0 0 16px; color: var(--text); }
 .hero .sub { color: var(--muted); max-width: 600px; margin: 0 auto 24px; font-size: 16px; }
 .hero-cta { display: inline-block; padding: 13px 28px; font-size: 15px; }
 @media (max-width: 600px) { .hero h1 { font-size: 30px; } }
@@ -69,7 +69,7 @@ main { max-width: 920px; margin: 0 auto; padding: 0 18px; }
 
 .tool-wrap { scroll-margin-top: 72px; }
 .dropzone {
-  border: 2px dashed #d7dbe0;
+  border: 2px dashed #3a3e45;
   border-radius: var(--radius);
   background: var(--panel);
   padding: 56px 20px;
@@ -94,7 +94,7 @@ main { max-width: 920px; margin: 0 auto; padding: 0 18px; }
 
 /* 섹션 (사용방법/기능/FAQ) */
 .section { padding: 56px 0 8px; scroll-margin-top: 72px; }
-.section-title { text-align: center; font-size: 28px; font-weight: 700; margin: 0 0 6px; color: #1a1a1a; }
+.section-title { text-align: center; font-size: 28px; font-weight: 700; margin: 0 0 6px; color: var(--text); }
 .section-sub { text-align: center; color: var(--muted); margin: 0 0 32px; font-size: 15px; }
 
 .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
@@ -154,7 +154,7 @@ main { max-width: 920px; margin: 0 auto; padding: 0 18px; }
   padding: 22px;
   box-shadow: var(--shadow);
 }
-.card h3 { margin: 0 0 14px; font-size: 17px; font-weight: 600; color: #1a1a1a; }
+.card h3 { margin: 0 0 14px; font-size: 17px; font-weight: 600; color: var(--text); }
 .card.info { margin-top: 18px; }
 
 .preview-box img {
@@ -162,7 +162,7 @@ main { max-width: 920px; margin: 0 auto; padding: 0 18px; }
   max-height: 260px;
   border-radius: 10px;
   display: block;
-  background: #f1f1f1;
+  background: #000;
 }
 .file-meta { color: var(--faint); font-size: 12px; margin: 8px 0 0; }
 
@@ -176,16 +176,16 @@ main { max-width: 920px; margin: 0 auto; padding: 0 18px; }
   flex: none; font-size: 11px; font-weight: 700; padding: 3px 9px;
   border-radius: 9999px; min-width: 54px; text-align: center;
 }
-.badge.found { background: #fff1e6; color: var(--warn); }
-.badge.clean { background: #e7f7ee; color: var(--good); }
-.badge.na { background: #eef0f2; color: var(--muted); }
+.badge.found { background: rgba(245, 158, 11, 0.16); color: var(--warn); }
+.badge.clean { background: rgba(104, 205, 82, 0.16); color: var(--good); }
+.badge.na { background: rgba(154, 160, 168, 0.16); color: var(--muted); }
 .report .k { font-weight: 600; color: var(--text); }
 .report .v { color: var(--muted); word-break: break-all; }
 
 .btn-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
 .btn {
-  background: #fff; color: var(--text);
-  border: 1px solid #d7dbe0; border-radius: var(--radius-sm);
+  background: var(--panel2); color: var(--text);
+  border: 1px solid #3a3e45; border-radius: var(--radius-sm);
   padding: 11px 18px; font-size: 14px; font-weight: 600; cursor: pointer;
   font-family: inherit;
   transition: background .15s, border-color .15s, box-shadow .15s, transform .05s;
@@ -207,13 +207,30 @@ a:hover { text-decoration: underline; }
 .be-config { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end; margin: 12px 0; }
 .be-config label { display: flex; flex-direction: column; font-size: 12px; color: var(--muted); gap: 5px; flex: 1; min-width: 180px; font-weight: 600; }
 .be-config input {
-  background: #fff; border: 1px solid #d7dbe0; border-radius: var(--radius-sm);
+  background: var(--panel2); border: 1px solid #3a3e45; border-radius: var(--radius-sm);
   color: var(--text); padding: 10px 12px; font-size: 13px; font-family: inherit; font-weight: 400;
 }
 .be-config input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
 .be-status { font-size: 12px; font-weight: 700; padding: 8px 0; }
 .be-status.good { color: var(--good); }
 .be-status.bad { color: var(--bad); }
+
+/* SynthID 확인 단계 */
+.verify-steps { display: flex; flex-direction: column; gap: 12px; margin: 14px 0; }
+.vstep { display: flex; gap: 12px; align-items: flex-start; }
+.vnum {
+  flex: none; width: 26px; height: 26px; border-radius: 50%;
+  background: var(--accent-soft); color: var(--accent); font-weight: 700; font-size: 13px;
+  display: flex; align-items: center; justify-content: center; margin-top: 2px;
+}
+.vstep b { font-size: 14px; }
+.vstep p { margin: 4px 0 0; }
+.notice {
+  margin-top: 14px; padding: 12px 14px;
+  background: rgba(245, 158, 11, 0.10); border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: var(--radius-sm);
+}
+.notice .small { color: var(--text2); }
 
 .foot {
   text-align: center; margin-top: 56px; padding: 32px 18px;
