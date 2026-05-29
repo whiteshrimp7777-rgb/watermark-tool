@@ -50,9 +50,9 @@
 
       <!-- ② 워터마크 제거 (GPU 서버 - 전체 제거) -->
       <section class="card info">
-        <h3>② 워터마크 제거 (보이는 + 인비저블 + 메타데이터)</h3>
+        <h3>② 워터마크 제거 (인비저블 + 메타데이터)</h3>
         <p class="muted">
-          한 번에 <b>보이는 워터마크 · 인비저블 워터마크(SynthID) · 메타데이터(EXIF·C2PA)</b>를 모두 제거합니다.
+          <b>인비저블 워터마크(SynthID) + 메타데이터(EXIF·C2PA)</b>를 제거합니다.
           GPU가 필요해 <b>운영자 PC의 서버</b>에서 처리하며, 서버가 켜져 있을 때만 동작합니다.
           이미지가 그 서버로 전송됩니다.
         </p>
@@ -69,7 +69,7 @@
         </div>
 
         <div class="btn-row">
-          <button id="beRun" class="btn primary" disabled>이 이미지 전체 제거 → 다운로드</button>
+          <button id="beRun" class="btn primary" disabled>이 이미지 인비저블+메타데이터 제거 → 다운로드</button>
         </div>
         <div id="beResult" class="report hidden"></div>
         <p class="muted small">
@@ -85,12 +85,7 @@
           무엇을 제거했냐에 따라 확인 방법이 다릅니다. <b>제거 전/후 파일을 둘 다</b> 올려 비교하세요.
         </p>
 
-        <p class="muted" style="margin-bottom:4px"><b>A. 보이는 워터마크 (✦ 스파클·로고)</b></p>
-        <ul class="links" style="margin-top:0">
-          <li>가장 간단: 결과 이미지를 <b>눈으로</b> 보고 로고가 사라졌는지 확인.</li>
-        </ul>
-
-        <p class="muted" style="margin-bottom:4px"><b>B. 메타데이터 · C2PA (출처 서명)</b></p>
+        <p class="muted" style="margin-bottom:4px"><b>A. 메타데이터 · C2PA (출처 서명)</b></p>
         <ul class="links" style="margin-top:0">
           <li>
             <a href="https://contentcredentials.org/verify" target="_blank" rel="noopener">contentcredentials.org/verify</a>
@@ -98,7 +93,7 @@
           </li>
         </ul>
 
-        <p class="muted" style="margin-bottom:4px"><b>C. 인비저블 SynthID — Gemini로 확인 (가장 현실적)</b></p>
+        <p class="muted" style="margin-bottom:4px"><b>B. 인비저블 SynthID — Gemini로 확인 (가장 현실적)</b></p>
         <ol class="links" style="margin-top:0">
           <li>
             <b>제거 전:</b>

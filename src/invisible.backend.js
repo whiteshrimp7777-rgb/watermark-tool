@@ -61,7 +61,7 @@ export function setupBackend(getCurrentFile) {
     const fd = new FormData();
     fd.append('file', file, file.name);
     fd.append('token', token);
-    fd.append('mode', 'all');
+    fd.append('mode', 'invisible');
 
     try {
       const r = await fetch(url + '/remove', { method: 'POST', body: fd });
@@ -81,7 +81,7 @@ export function setupBackend(getCurrentFile) {
       beResult.innerHTML = `<p style="color:#ff5c5c">실패: ${e.message}</p>`;
     } finally {
       beRun.disabled = false;
-      beRun.textContent = '이 이미지 인비저블 제거 → 다운로드';
+      beRun.textContent = '이 이미지 인비저블+메타데이터 제거 → 다운로드';
     }
   });
 }
